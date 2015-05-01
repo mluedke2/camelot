@@ -13,12 +13,12 @@
 		FA59C5AD1AF3695900F7B26D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA59C5AC1AF3695900F7B26D /* Images.xcassets */; };
 		FA59C5B01AF3695900F7B26D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59C5AE1AF3695900F7B26D /* LaunchScreen.xib */; };
 		FA59C5BC1AF3695900F7B26D /* CamelotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C5BB1AF3695900F7B26D /* CamelotTests.swift */; };
-		FA59C5CF1AF36A7600F7B26D /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA59C5CC1AF36A6F00F7B26D /* ResearchKit.framework */; };
-		FA59C5D01AF36A7600F7B26D /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA59C5CC1AF36A6F00F7B26D /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA59C5D51AF36AA200F7B26D /* ConsentDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C5D41AF36AA200F7B26D /* ConsentDocument.swift */; };
 		FA59C5D71AF36C0700F7B26D /* ConsentTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C5D61AF36C0700F7B26D /* ConsentTask.swift */; };
 		FA59C5D91AF3708D00F7B26D /* SurveyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C5D81AF3708D00F7B26D /* SurveyTask.swift */; };
 		FA59C5DB1AF3725600F7B26D /* MicrophoneTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C5DA1AF3725600F7B26D /* MicrophoneTask.swift */; };
+		FAD26E9B1AF379DE00D931DE /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD26E981AF379D500D931DE /* ResearchKit.framework */; };
+		FAD26E9C1AF379DE00D931DE /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FAD26E981AF379D500D931DE /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,23 +29,23 @@
 			remoteGlobalIDString = FA59C59F1AF3695900F7B26D;
 			remoteInfo = Camelot;
 		};
-		FA59C5CB1AF36A6F00F7B26D /* PBXContainerItemProxy */ = {
+		FAD26E971AF379D500D931DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FA59C5C51AF36A6E00F7B26D /* ResearchKit.xcodeproj */;
+			containerPortal = FAD26E911AF379D500D931DE /* ResearchKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B183A5951A8535D100C76870;
 			remoteInfo = ResearchKit;
 		};
-		FA59C5CD1AF36A6F00F7B26D /* PBXContainerItemProxy */ = {
+		FAD26E991AF379D500D931DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FA59C5C51AF36A6E00F7B26D /* ResearchKit.xcodeproj */;
+			containerPortal = FAD26E911AF379D500D931DE /* ResearchKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
 			remoteInfo = ResearchKitTests;
 		};
-		FA59C5D11AF36A7600F7B26D /* PBXContainerItemProxy */ = {
+		FAD26E9D1AF379DE00D931DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FA59C5C51AF36A6E00F7B26D /* ResearchKit.xcodeproj */;
+			containerPortal = FAD26E911AF379D500D931DE /* ResearchKit.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = B183A4731A8535D100C76870;
 			remoteInfo = ResearchKit;
@@ -59,7 +59,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FA59C5D01AF36A7600F7B26D /* ResearchKit.framework in Embed Frameworks */,
+				FAD26E9C1AF379DE00D931DE /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,11 +77,11 @@
 		FA59C5B51AF3695900F7B26D /* CamelotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamelotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA59C5BA1AF3695900F7B26D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA59C5BB1AF3695900F7B26D /* CamelotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamelotTests.swift; sourceTree = "<group>"; };
-		FA59C5C51AF36A6E00F7B26D /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ../ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 		FA59C5D41AF36AA200F7B26D /* ConsentDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentDocument.swift; sourceTree = "<group>"; };
 		FA59C5D61AF36C0700F7B26D /* ConsentTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsentTask.swift; sourceTree = "<group>"; };
 		FA59C5D81AF3708D00F7B26D /* SurveyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyTask.swift; sourceTree = "<group>"; };
 		FA59C5DA1AF3725600F7B26D /* MicrophoneTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicrophoneTask.swift; sourceTree = "<group>"; };
+		FAD26E911AF379D500D931DE /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA59C5CF1AF36A7600F7B26D /* ResearchKit.framework in Frameworks */,
+				FAD26E9B1AF379DE00D931DE /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +106,7 @@
 		FA59C5971AF3695900F7B26D = {
 			isa = PBXGroup;
 			children = (
-				FA59C5C51AF36A6E00F7B26D /* ResearchKit.xcodeproj */,
+				FAD26E911AF379D500D931DE /* ResearchKit.xcodeproj */,
 				FA59C5A21AF3695900F7B26D /* Camelot */,
 				FA59C5B81AF3695900F7B26D /* CamelotTests */,
 				FA59C5A11AF3695900F7B26D /* Products */,
@@ -164,11 +164,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FA59C5C61AF36A6E00F7B26D /* Products */ = {
+		FAD26E921AF379D500D931DE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA59C5CC1AF36A6F00F7B26D /* ResearchKit.framework */,
-				FA59C5CE1AF36A6F00F7B26D /* ResearchKitTests.xctest */,
+				FAD26E981AF379D500D931DE /* ResearchKit.framework */,
+				FAD26E9A1AF379D500D931DE /* ResearchKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				FA59C5D21AF36A7600F7B26D /* PBXTargetDependency */,
+				FAD26E9E1AF379DE00D931DE /* PBXTargetDependency */,
 			);
 			name = Camelot;
 			productName = Camelot;
@@ -244,8 +244,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = FA59C5C61AF36A6E00F7B26D /* Products */;
-					ProjectRef = FA59C5C51AF36A6E00F7B26D /* ResearchKit.xcodeproj */;
+					ProductGroup = FAD26E921AF379D500D931DE /* Products */;
+					ProjectRef = FAD26E911AF379D500D931DE /* ResearchKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -257,18 +257,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		FA59C5CC1AF36A6F00F7B26D /* ResearchKit.framework */ = {
+		FAD26E981AF379D500D931DE /* ResearchKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ResearchKit.framework;
-			remoteRef = FA59C5CB1AF36A6F00F7B26D /* PBXContainerItemProxy */;
+			remoteRef = FAD26E971AF379D500D931DE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FA59C5CE1AF36A6F00F7B26D /* ResearchKitTests.xctest */ = {
+		FAD26E9A1AF379D500D931DE /* ResearchKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ResearchKitTests.xctest;
-			remoteRef = FA59C5CD1AF36A6F00F7B26D /* PBXContainerItemProxy */;
+			remoteRef = FAD26E991AF379D500D931DE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -323,10 +323,10 @@
 			target = FA59C59F1AF3695900F7B26D /* Camelot */;
 			targetProxy = FA59C5B61AF3695900F7B26D /* PBXContainerItemProxy */;
 		};
-		FA59C5D21AF36A7600F7B26D /* PBXTargetDependency */ = {
+		FAD26E9E1AF379DE00D931DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ResearchKit;
-			targetProxy = FA59C5D11AF36A7600F7B26D /* PBXContainerItemProxy */;
+			targetProxy = FAD26E9D1AF379DE00D931DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -504,6 +504,7 @@
 				FA59C5C11AF3695900F7B26D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA59C5C21AF3695900F7B26D /* Build configuration list for PBXNativeTarget "CamelotTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +513,7 @@
 				FA59C5C41AF3695900F7B26D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
