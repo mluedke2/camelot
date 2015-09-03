@@ -76,6 +76,9 @@ public class SurveyTask: NSObject, ORKTask {
       let nameQuestionStepTitle = "What is your name?"
       return ORKQuestionStep(identifier: nameStepID, title: nameQuestionStepTitle, answer: nameAnswerFormat)
       
+    case questStepID:
+      return questStep("")
+      
     case colorStepID:
       let colorQuestionStepTitle = "What is your favorite color?"
       let colorTuples = [
