@@ -28,7 +28,7 @@ public class SurveyTask: NSObject, ORKTask {
       return stepWithIdentifier(nameStepID)
       
     case .Some(colorStepID):
-      return stepWithIdentifier(questStepID)
+      return questStep(findName(result))
       
     case .Some(summaryStepID):
       return stepWithIdentifier(colorStepID)
@@ -48,7 +48,7 @@ public class SurveyTask: NSObject, ORKTask {
       return stepWithIdentifier(nameStepID)
       
     case .Some(nameStepID):
-      return stepWithIdentifier(questStepID)
+      return questStep(findName(result))
       
     case .Some(questStepID):
       return stepWithIdentifier(colorStepID)
@@ -76,16 +76,6 @@ public class SurveyTask: NSObject, ORKTask {
       let nameQuestionStepTitle = "What is your name?"
       return ORKQuestionStep(identifier: nameStepID, title: nameQuestionStepTitle, answer: nameAnswerFormat)
       
-    case questStepID:
-      let questQuestionStepTitle = "What is your quest?"
-      let textChoices = [
-        ORKTextChoice(text: "Create a ResearchKit App", value: 0),
-        ORKTextChoice(text: "Seek the Holy Grail", value: 1),
-        ORKTextChoice(text: "Find a shrubbery", value: 2)
-      ]
-      let questAnswerFormat: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: textChoices)
-      return ORKQuestionStep(identifier: questStepID, title: questQuestionStepTitle, answer: questAnswerFormat)
-      
     case colorStepID:
       let colorQuestionStepTitle = "What is your favorite color?"
       let colorTuples = [
@@ -112,5 +102,31 @@ public class SurveyTask: NSObject, ORKTask {
     default:
       return nil
     }
+  }
+  
+  func findName(result: ORKTaskResult) -> String? {
+    
+    if let stepResult = result.resultForIdentifier(nameStepID) as? ORKStepResult, let subResults = stepResult.results, let textQuestionResult = subResults[0] as? ORKTextQuestionResult {
+      
+      return textQuestionResult.textAnswer
+    }
+    return nil
+  }
+  
+  func questStep(name: String?) -> ORKStep {
+    
+    var questQuestionStepTitle = "What is your quest?"
+    
+    if let name = name {
+      questQuestionStepTitle = "What is your quest, \(name)?"
+    }
+    
+    let textChoices = [
+      ORKTextChoice(text: "Create a ResearchKit App", value: 0),
+      ORKTextChoice(text: "Seek the Holy Grail", value: 1),
+      ORKTextChoice(text: "Find a shrubbery", value: 2)
+    ]
+    let questAnswerFormat: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: textChoices)
+    return ORKQuestionStep(identifier: questStepID, title: questQuestionStepTitle, answer: questAnswerFormat)
   }
 }
