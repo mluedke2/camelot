@@ -50,9 +50,13 @@ class ViewController: UIViewController, ORKTaskViewControllerDelegate {
   
   func findSoundFile(result: ORKTaskResult) -> NSURL? {
     
-    if let results = result.results, let stepResult = results[3] as? ORKStepResult, let subResults = stepResult.results, let fileResult = subResults[0] as? ORKFileResult {
-      
-      return fileResult.fileURL
+    if let results = result.results {
+      if results.count > 3 {
+        if let stepResult = results[3] as? ORKStepResult, let subResults = stepResult.results, let fileResult = subResults[0] as? ORKFileResult {
+          
+          return fileResult.fileURL
+        }
+      }
     }
     
     return nil
