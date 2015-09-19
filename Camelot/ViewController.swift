@@ -29,14 +29,16 @@ class ViewController: UIViewController, ORKTaskViewControllerDelegate {
   @IBAction func microphoneTapped(sender : AnyObject) {
     let taskViewController = ORKTaskViewController(task: MicrophoneTask, taskRunUUID: nil)
     taskViewController.delegate = self
-    taskViewController.outputDirectory = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String, isDirectory: true)
+    taskViewController.outputDirectory = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0], isDirectory: true)
     presentViewController(taskViewController, animated: true, completion: nil)
   }
   
   @IBAction func playMostRecentSound(sender: AnyObject) {
     if let soundFileURL = soundFileURL {
-      audioPlayer = AVAudioPlayer(contentsOfURL: soundFileURL, fileTypeHint: AVFileTypeAppleM4A, error: nil)
-      audioPlayer?.play()
+      do {
+        try audioPlayer = AVAudioPlayer(contentsOfURL: soundFileURL, fileTypeHint: AVFileTypeAppleM4A)
+        audioPlayer?.play()
+      } catch {}
     }
   }
   
