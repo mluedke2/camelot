@@ -8,7 +8,7 @@
 
 import ResearchKit
 
-public class SurveyTask: NSObject, ORKTask {
+open class SurveyTask: NSObject, ORKTask {
   
   let introStepID = "intro_step"
   let nameStepID = "name_step"
@@ -16,52 +16,52 @@ public class SurveyTask: NSObject, ORKTask {
   let colorStepID = "color_step"
   let summaryStepID = "summary_step"
   
-  public var identifier: String { get { return "survey"} }
+  open var identifier: String { get { return "survey"} }
   
-  public func stepBeforeStep(step: ORKStep?, withResult result: ORKTaskResult) -> ORKStep? {
+  open func step(before step: ORKStep?, with result: ORKTaskResult) -> ORKStep? {
     
     switch step?.identifier {
-    case .Some(nameStepID):
-      return stepWithIdentifier(introStepID)
+    case .some(nameStepID):
+      return self.step(withIdentifier: introStepID)
       
-    case .Some(questStepID):
-      return stepWithIdentifier(nameStepID)
+    case .some(questStepID):
+      return self.step(withIdentifier: nameStepID)
       
-    case .Some(colorStepID):
+    case .some(colorStepID):
       return questStep(findName(result))
       
-    case .Some(summaryStepID):
-      return stepWithIdentifier(colorStepID)
+    case .some(summaryStepID):
+      return self.step(withIdentifier: colorStepID)
       
     default:
       return nil
     }
   }
   
-  public func stepAfterStep(step: ORKStep?, withResult result: ORKTaskResult) -> ORKStep? {
+  open func step(after step: ORKStep?, with result: ORKTaskResult) -> ORKStep? {
     
     switch step?.identifier {
-    case .None:
-      return stepWithIdentifier(introStepID)
+    case .none:
+      return self.step(withIdentifier: introStepID)
       
-    case .Some(introStepID):
-      return stepWithIdentifier(nameStepID)
+    case .some(introStepID):
+      return self.step(withIdentifier: nameStepID)
       
-    case .Some(nameStepID):
+    case .some(nameStepID):
       return questStep(findName(result))
       
-    case .Some(questStepID):
-      return stepWithIdentifier(colorStepID)
+    case .some(questStepID):
+      return self.step(withIdentifier: colorStepID)
       
-    case .Some(colorStepID):
-      return stepWithIdentifier(summaryStepID)
+    case .some(colorStepID):
+      return self.step(withIdentifier: summaryStepID)
       
     default:
       return nil
     }
   }
   
-  public func stepWithIdentifier(identifier: String) -> ORKStep? {
+  open func step(withIdentifier identifier: String) -> ORKStep? {
     switch identifier {
       
     case introStepID:
@@ -91,9 +91,9 @@ public class SurveyTask: NSObject, ORKTask {
       ]
       var imageChoices:[ORKImageChoice] = []
       for (image, name) in colorTuples {
-        imageChoices.append(ORKImageChoice(normalImage: image, selectedImage: nil, text: name, value: name))
+        imageChoices.append(ORKImageChoice(normalImage: image, selectedImage: nil, text: name, value: name as NSCoding & NSCopying & NSObjectProtocol))
       }
-      let colorAnswerFormat: ORKImageChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithImageChoices(imageChoices)
+      let colorAnswerFormat: ORKImageChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(withImageChoices: imageChoices)
       return ORKQuestionStep(identifier: colorStepID, title: colorQuestionStepTitle, answer: colorAnswerFormat)
       
     case summaryStepID:
@@ -107,16 +107,16 @@ public class SurveyTask: NSObject, ORKTask {
     }
   }
   
-  func findName(result: ORKTaskResult) -> String? {
+  func findName(_ result: ORKTaskResult) -> String? {
     
-    if let stepResult = result.resultForIdentifier(nameStepID) as? ORKStepResult, let subResults = stepResult.results, let textQuestionResult = subResults[0] as? ORKTextQuestionResult {
+    if let stepResult = result.result(forIdentifier: nameStepID) as? ORKStepResult, let subResults = stepResult.results, let textQuestionResult = subResults[0] as? ORKTextQuestionResult {
       
       return textQuestionResult.textAnswer
     }
     return nil
   }
   
-  func questStep(name: String?) -> ORKStep {
+  func questStep(_ name: String?) -> ORKStep {
     
     var questQuestionStepTitle = "What is your quest?"
     
@@ -125,11 +125,11 @@ public class SurveyTask: NSObject, ORKTask {
     }
     
     let textChoices = [
-      ORKTextChoice(text: "Create a ResearchKit App", value: 0),
-      ORKTextChoice(text: "Seek the Holy Grail", value: 1),
-      ORKTextChoice(text: "Find a shrubbery", value: 2)
+      ORKTextChoice(text: "Create a ResearchKit App", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+      ORKTextChoice(text: "Seek the Holy Grail", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+      ORKTextChoice(text: "Find a shrubbery", value: 2 as NSCoding & NSCopying & NSObjectProtocol)
     ]
-    let questAnswerFormat: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: textChoices)
+    let questAnswerFormat: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: textChoices)
     return ORKQuestionStep(identifier: questStepID, title: questQuestionStepTitle, answer: questAnswerFormat)
   }
 }
