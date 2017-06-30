@@ -10,47 +10,46 @@ import AVFoundation
 import ResearchKit
 
 class ViewController: UIViewController, ORKTaskViewControllerDelegate {
-  
+    
   var audioPlayer: AVAudioPlayer?
-  var soundFileURL: NSURL?
+  var soundFileURL: URL?
   
-  @IBAction func consentTapped(sender : AnyObject) {
-    let taskViewController = ORKTaskViewController(task: ConsentTask, taskRunUUID: nil)
+  @IBAction func consentTapped(_ sender : AnyObject) {
+    let taskViewController = ORKTaskViewController(task: ConsentTask, taskRun: nil)
     taskViewController.delegate = self
-    presentViewController(taskViewController, animated: true, completion: nil)
+    present(taskViewController, animated: true, completion: nil)
   }
   
-  @IBAction func surveyTapped(sender : AnyObject) {
-    let taskViewController = ORKTaskViewController(task: SurveyTask(), taskRunUUID: nil)
+  @IBAction func surveyTapped(_ sender : AnyObject) {
+    let taskViewController = ORKTaskViewController(task: SurveyTask(), taskRun: nil)
     taskViewController.delegate = self
-    presentViewController(taskViewController, animated: true, completion: nil)
+    present(taskViewController, animated: true, completion: nil)
   }
   
-  @IBAction func microphoneTapped(sender : AnyObject) {
-    let taskViewController = ORKTaskViewController(task: MicrophoneTask, taskRunUUID: nil)
+  @IBAction func microphoneTapped(_ sender : AnyObject) {
+    let taskViewController = ORKTaskViewController(task: MicrophoneTask, taskRun: nil)
     taskViewController.delegate = self
-    taskViewController.outputDirectory = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0], isDirectory: true)
-    presentViewController(taskViewController, animated: true, completion: nil)
+    taskViewController.outputDirectory = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0], isDirectory: true)
+    present(taskViewController, animated: true, completion: nil)
   }
   
-  @IBAction func playMostRecentSound(sender: AnyObject) {
+  @IBAction func playMostRecentSound(_ sender: AnyObject) {
     if let soundFileURL = soundFileURL {
       do {
-        try audioPlayer = AVAudioPlayer(contentsOfURL: soundFileURL, fileTypeHint: AVFileTypeAppleM4A)
+        try audioPlayer = AVAudioPlayer(contentsOf: soundFileURL, fileTypeHint: AVFileTypeAppleM4A)
         audioPlayer?.play()
       } catch {}
     }
   }
-  
-  func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
     
-    // check for a sound file
-    soundFileURL = findSoundFile(taskViewController.result)
+    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+        // check for a sound file
+        soundFileURL = findSoundFile(taskViewController.result)
+        
+        taskViewController.dismiss(animated: true, completion: nil)
+    }
     
-    taskViewController.dismissViewControllerAnimated(true, completion: nil)
-  }
-  
-  func findSoundFile(result: ORKTaskResult) -> NSURL? {
+    func findSoundFile(_ result: ORKTaskResult) -> URL? {
     
     if let results = result.results {
       if results.count > 3 {
